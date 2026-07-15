@@ -4,6 +4,7 @@ import SearchBar from "./components/SearchBar";
 import WeatherCard from "./components/WeatherCard";
 import WeatherDetails from "./components/WeatherDetails";
 import Forecast from "./components/Forecast";
+import Fav from "/src/assets/fav.png";
 import Loading from "./components/Loading";
 import Error from "./components/Error";
 import { Navigation, Sun, Cloud, CloudRain, CloudLightning, Snowflake ,Calendar, Sparkles } from "lucide-react";
@@ -92,7 +93,7 @@ export default function App() {
           {/* Logo on Left */}
           <div className="flex items-center gap-3">
             <div className="w-11 h-11 rounded-2xl  flex items-center justify-center shadow-[0_0_20px_rgba(59,130,246,0.3)] border border-white/10 ">
-             <img src={'/src/assets/fav.png'}></img>
+             <img src={Fav}></img>
             </div>
             <div>
               <h1 className="text-2xl font-black tracking-[4px] bg-gradient-to-r from-sky-400 via-indigo-200 to-white bg-clip-text text-transparent">
@@ -189,7 +190,11 @@ export default function App() {
                       <div className="space-y-3 text-xs text-slate-300 font-semibold border-t border-white/5 pt-4">
                         <div className="flex justify-between">
                           <span className="text-slate-500">Latitude:</span>
-                          <span className="font-mono">{weatherData.current.coord.lat.toFixed(2)}°</span>
+                        {weatherData.current?.coord && (
+  <span className="font-mono">
+    {weatherData.current.coord.lat.toFixed(2)}°
+  </span>
+)}
                         </div>
                         <div className="flex justify-between">
                           <span className="text-slate-500">Longitude:</span>
